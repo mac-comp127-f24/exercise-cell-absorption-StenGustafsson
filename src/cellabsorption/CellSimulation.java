@@ -45,7 +45,7 @@ public class CellSimulation {
                 Color.getHSBColor(rand.nextFloat(), rand.nextFloat() * 0.5f + 0.1f, 1)));
         } 
         for (Cell cell : cells) {
-            canvas.add(cell.shape);
+            canvas.add(cell.getShape());
         }
     }
     

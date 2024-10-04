@@ -10,9 +10,9 @@ public class Cell {
         WIGGLINESS = 0.2,
         WANDER_FROM_CENTER = 60000;
 
-    public Ellipse shape;
-    public double radius;
-    public double direction;
+    private Ellipse shape;
+    private double radius;
+    private double direction;
 
     public Cell(double x, double y, double radius, Color color) {
         shape = new Ellipse(x, y, radius * 2, radius * 2);
