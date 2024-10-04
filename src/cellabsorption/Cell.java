@@ -21,6 +21,10 @@ public class Cell {
         direction = normalizeRadians(Math.random() * Math.PI * 2);
     }
 
+    public Ellipse getShape() {
+        return shape;
+    }
+
     public void grow(double amount) {
         setRadius(radius + amount);
     }
