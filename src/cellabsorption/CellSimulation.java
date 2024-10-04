@@ -21,15 +21,15 @@ public class CellSimulation {
 
     public CellSimulation() {
         canvas = new CanvasWindow("Cell Absorption", 800, 800);
-        populateCells(10);
+        populateCells(200);
 
         //noinspection InfiniteLoopStatement
         while (true) {
             Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
             for (Cell cell : cells) {
                 cell.moveAround(canvasCenter);
-                cell.grow(0.02);
             }
+            handleCellInteraction();
             canvas.draw();
             canvas.pause(10);
         }
@@ -43,16 +43,17 @@ public class CellSimulation {
                 rand.nextDouble() * (canvas.getWidth() - size),
                 size,
                 Color.getHSBColor(rand.nextFloat(), rand.nextFloat() * 0.5f + 0.1f, 1)));
-
-        }
-        
+        } 
         for (Cell cell : cells) {
             canvas.add(cell.shape);
         }
     }
-
-
-    private static double sqr(double x) {
-        return x * x;
+    
+    private void handleCellInteraction() {
+        for (int i = 0; i < cells.size()-1; i++) {
+            for (int j = i + 1; j < cells.size(); j++) {
+                cells.get(i).interactWith(cells.get(j));
+            }
+        }
     }
 }
